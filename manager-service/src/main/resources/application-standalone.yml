@@ -1,0 +1,9 @@
+springshop:
+  services:
+    catalogue:
+      uri: http://localhost:8083
+spring:
+  application:
+    name: manager-service
+server:
+  port: 8082

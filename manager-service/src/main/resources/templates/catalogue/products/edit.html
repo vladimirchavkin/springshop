@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit [[${product.title}]] &ndash; SpringShop</title>
+</head>
+<body>
+<a data-th-href="@{/catalogue/products/{productId}(productId=${product.id})}">&larr;Back to the product</a>
+<h1>Edit [[${product.title}]]</h1>
+<div data-th-if="${errors}">
+    <h2>There are mistakes</h2>
+    <ul>
+        <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
+    </ul>
+</div>
+<form method="post" data-th-action="@{/catalogue/products/{productId}/edit(productId=${product.id})}">
+    <label>
+        Title:<br>
+        <input type="text" name="title" data-th-value="${payload != null ? payload.title : product.title} ">
+    </label> <br>
+    <label>
+        Details:<br>
+        <textarea name="details" data-th-text="${payload != null ? payload.details : product.details}"></textarea>
+    </label> <br>
+    <button type="submit">Edit</button>
+</form>
+</body>
+</html>
