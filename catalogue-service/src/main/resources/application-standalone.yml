@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: catalogue-service
+
+server:
+  port: 8083
+  error:
+    include-stacktrace: never
