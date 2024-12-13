@@ -3,6 +3,7 @@ package ru.chavkin.gp.catalogueservice.service;
 
 import ru.chavkin.gp.catalogueservice.entity.Product;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 public interface ProductService {
 
-    Iterable<Product> findAllProducts(String filter);
+    List<Product> findAllProducts();
 
     Product createProduct(String title, String details);
 

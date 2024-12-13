@@ -1,24 +1,22 @@
 package ru.chavkin.gp.catalogueservice.repository;
 
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import ru.chavkin.gp.catalogueservice.entity.Product;
 
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Vladimir Chavkin (vladimirchavkinwork@gmail.com)
  */
 
-public interface ProductRepository extends CrudRepository<Product, Integer> {
+public interface ProductRepository {
 
-    // JPQL Query
-    //  @Query(value = "select p from Product p where p.title ilike :filter")
-    // Native Query
-    //  @Query(value = "select * from catalogue.t_product where c_title ilike :filter", nativeQuery = true)
-    // Named Query
-    @Query(name = "Product.findAllByTitleLikeIgnoringCase")
-    Iterable<Product> findAllByTitleLikeIgnoreCase(@Param("filter") String filter);
+    List<Product> findAll();
 
+    Product save(Product product);
+
+    Optional<Product> findById(Integer productId);
+
+    void deleteById(Integer id);
 }

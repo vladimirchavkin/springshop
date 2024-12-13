@@ -2,20 +2,8 @@ springshop:
   services:
     catalogue:
       uri: http://localhost:8083
-      auth:
-        username: admin
-        password: '{noop}admin'
 spring:
   application:
     name: manager-service
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/manager
-    username: postgres
-    password: postgres
-  flyway:
-    schemas:
-      - public
-      - manager
 server:
   port: 8082

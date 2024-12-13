@@ -12,6 +12,7 @@ import ru.chavkin.gp.catalogueservice.controller.payload.NewProductPayload;
 import ru.chavkin.gp.catalogueservice.entity.Product;
 import ru.chavkin.gp.catalogueservice.service.ProductService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,8 +27,8 @@ public class ProductsRestController {
     private final ProductService productService;
 
     @GetMapping
-    public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter) {
-        return this.productService.findAllProducts(filter);
+    public List<Product> findProducts() {
+        return this.productService.findAllProducts();
     }
 
     @PostMapping

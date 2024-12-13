@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import ru.chavkin.gp.managerservice.client.BadRequestException;
 import ru.chavkin.gp.managerservice.client.ProductsRestClient;
 import ru.chavkin.gp.managerservice.controller.payload.NewProductPayload;
@@ -25,9 +24,8 @@ public class ProductsController {
     private final ProductsRestClient productsRestClient;
 
     @GetMapping("list")
-    public String getProductsList(Model model, @RequestParam(name = "filter", required = false) String filter) {
-        model.addAttribute("products", this.productsRestClient.findAllProducts(filter));
-        model.addAttribute("filter", filter);
+    public String getProductsList(Model model) {
+        model.addAttribute("products", this.productsRestClient.findAllProducts());
         return "catalogue/products/list";
     }
 

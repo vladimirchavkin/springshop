@@ -1,28 +1,8 @@
 spring:
-  security:
-    user:
-      name: admin
-      password: admin
-      roles:
-        - SERVICE
   application:
     name: catalogue-service
-  datasource:
-    url: jdbc:postgresql://localhost:5432/catalogue
-    username: postgres
-    password: postgres
-  flyway:
-    schemas:
-      - public
-      - catalogue
-  jpa:
-    show-sql: true
 
 server:
   port: 8083
   error:
     include-stacktrace: never
-
-logging:
-  level:
-    sql: info
