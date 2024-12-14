@@ -1,7 +1,21 @@
 spring:
   application:
     name: catalogue-service
-
+  datasource:
+    url: jdbc:postgresql://localhost:5432/catalogue
+    username: postgres
+    password: postgres
+    flyway:
+      schemas:
+        - public
+        - catalogue
+    jpa:
+      show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8084/realms/springshop
 server:
   port: 8083
   error:

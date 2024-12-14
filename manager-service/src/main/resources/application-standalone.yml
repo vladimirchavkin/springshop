@@ -2,8 +2,33 @@ springshop:
   services:
     catalogue:
       uri: http://localhost:8083
+      registration-id: keycloak
 spring:
   application:
     name: manager-service
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8084/realms/springshop
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: manager-service
+            client-secret: tb0CYi1sBcoHh05luCNuBshgt3GuFfTQ
+            scope:
+              - openid
+              - view_catalogue
+              - edit_catalogue
+              - microprofile-jwt
+  datasource:
+    url: jdbc:postgresql://localhost:5432/manager
+    username: postgres
+    password: postgres
+  flyway:
+    schemas:
+      - public
+      - manager
 server:
   port: 8082
